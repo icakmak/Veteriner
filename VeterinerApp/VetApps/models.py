@@ -22,8 +22,8 @@ class Kind(models.Model):
         return self.kindName 
     
 class Animal(models.Model):
-    animalCustomer=models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='sahipler')
-    animalKind=models.ForeignKey(Kind, on_delete=models.CASCADE, related_name='turler')
+    animalCustomer=models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='Animals')
+    animalKind=models.ForeignKey(Kind, on_delete=models.CASCADE, related_name='Animals')
     animalName = models.CharField(max_length=120)
     animalPhoto = models.CharField(max_length=120)
     animalBirthdate = models.DateField()

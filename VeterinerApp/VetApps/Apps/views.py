@@ -7,11 +7,12 @@ from VetApps.Apps.serializers import CustomerSerializer,KindSerializer,AnimalSer
 
 from rest_framework.views import APIView
 from rest_framework.generics import get_object_or_404
+
 #sahiplar başlangıç
 class CustomerListCreateAPIView(APIView):
     def get(self, request):
-        sahiplerk=Customer.objects.all()
-        serializer=CustomerSerializer(sahiplerk, many=True,   context={'request': request}) 
+        tumsahipler=Customer.objects.all()
+        serializer=CustomerSerializer(tumsahipler, many=True,   context={'request': request}) 
         return Response(serializer.data)
     
     def post(self, request ):
