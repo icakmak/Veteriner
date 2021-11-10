@@ -9,18 +9,20 @@ from VetApps.models import Customer,Kind,Animal
 
 
 class AnimalSerializer(serializers.ModelSerializer):
+    animalCustomer=serializers.StringRelatedField()
+    animalKind=serializers.StringRelatedField()
     class Meta:
         model=Animal
-        fields='__all__'
+        fields=['animalName','animalPhoto','animalBirthdate','animalCustomer','animalKind']
 
 class CustomerSerializer(serializers.ModelSerializer):
-    hayvanlari=serializers.HyperlinkedRelatedField(
+    sahipler=serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
-        view_name='hayvan-detail' # 'hayvan-detail' urls deki name alanındaki veriyi yazıyoruz
+        view_name='hayvanlar-detail' # 'hayvan-detail' urls deki name alanındaki veriyi yazıyoruz
         
     )
-    
+    # hayvanlari=AnimalSerializer(many=True,read_only=True)
     class Meta:
         model = Customer
         fields = '__all__'
